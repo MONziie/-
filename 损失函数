@@ -1,0 +1,70 @@
+####点到即止，主要是理清思路做个笔记，具体的参考原文再按点深入####
+####文章摘抄https://www.cnblogs.com/guoyaohua/p/9217206.html####
+
+在机器学习中，损失函数（loss function）是用来估量模型的预测值f(x)与真实值Y的不一致程度，
+损失函数越小，一般就代表模型的鲁棒性越好，正是损失函数指导了模型的学习。---------最优化问题
+
+
+一、LogLoss对数损失函数（逻辑回归，交叉熵损失）
+
+逻辑回归的损失函数不是平方损失。平方损失函数(最小二乘法)可以通过线性回归在假设样本是高斯分布的条件下推导得到，
+在逻辑回归的推导中，它假设样本服从伯努利分布（0-1分布），然后求得满足该分布的似然函数，接着取对数求极值等等。
+而逻辑回归并没有求似然函数的极值，而是把极大化当做是一种思想，进而推导出它的经验风险函数为：
+最小化负的似然函数（即max F(y, f(x)) —> min -F(y, f(x)))。从损失函数的视角来看，它就成了log损失函数了。
+
+损失函数L(Y, P(Y|X))表达的是样本X在分类Y的情况下，使概率P(Y|X)达到最大值（换言之，就是利用已知的样本分布，找到最有可能（即最大概率）导致
+这种分布的参数值；或者说什么样的参数才能使我们观测到目前这组数据的概率最大）。
+
+softmax使用的即为交叉熵损失函数，
+binary_cossentropy为二分类交叉熵损失，
+categorical_crossentropy为多分类交叉熵损失，当使用多分类交叉熵损失函数时，标签应该为多分类模式，即使用one-hot编码的向量。one-hot=True
+
+二、平方损失函数（最小二乘法, Ordinary Least Squares ）
+最小二乘的基本原则是：最优拟合直线应该是使各点到回归直线的距离和最小的直线，即平方和最小。
+
+目的就是最小化目标函数值，即最小化残差的平方和（residual sum of squares，RSS）。
+
+三、指数损失函数（Adaboost）
+前向分步加法算法
+Adaboost的目标式子就是指数损失
+
+
+四、Hinge损失函数（SVM）
+机器学习算法中，hinge损失函数和SVM是息息相关的
+在libsvm中一共有4中核函数可以选择，对应的是-t参数分别是：
+0-线性核；
+1-多项式核；
+2-RBF核；
+3-sigmoid核。
+
+
+五、其它损失函数
+0-1损失函数
+绝对值损失函数
+
+
+六、Keras / TensorFlow 中常用 Cost Function 总结
+
+mean_squared_error或mse
+mean_absolute_error或mae
+mean_absolute_percentage_error或mape
+mean_squared_logarithmic_error或msle
+squared_hinge
+hinge
+categorical_hinge
+binary_crossentropy（亦称作对数损失，logloss）
+logcosh
+categorical_crossentropy：亦称作多类的对数损失，注意使用该目标函数时，需要将标签转化为形如(nb_samples, nb_classes)的二值序列
+sparse_categorical_crossentrop：如上，但接受稀疏标签。注意，使用该函数时仍然需要你的标签与输出值的维度相同，你可能需要在标签数据上增加一个维度：np.expand_dims(y,-1)
+kullback_leibler_divergence:从预测值概率分布Q到真值概率分布P的信息增益,用以度量两个分布的差异.
+poisson：即(predictions - targets * log(predictions))的均值
+cosine_proximity：即预测值与真实标签的余弦距离平均值的相反数
+
+需要记住的是：参数越多，模型越复杂，而越复杂的模型越容易过拟合。
+过拟合就是说模型在训练数据上的效果远远好于在测试集上的性能。
+此时可以考虑正则化，通过设置正则项前面的hyper parameter，来权衡损失函数和正则项，减小参数规模，达到模型简化的目的，
+从而使模型具有更好的泛化能力。
+
+
+图文参考：
+原文链接：https://www.cnblogs.com/guoyaohua/p/9217206.html
