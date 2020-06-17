@@ -1,0 +1,14 @@
+L1正则化（L1范数）：权值向量w中各个元素的绝对值之和
+L2正则化（L2范数）：权值向量w中各个元素的平方和
+
+问：L1比L2更容易让参数变得稀疏？why？
+答：L1有更多突出的角，而这些角上很多权值w取值为0，另外角更突出，所以更加容易与经验风险最小化部分产生交叉求得解。
+
+# loss = tf.reduce_mean(tf.square(y - y_pred))
+
+# 结构风险=经验风险+正则化，经验风险使用交叉熵，正则化使用L2。
+loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels = y, logits = finalOutput))\
+#        + tf.contrib.layers.l2_regularizer(0.05)(W1) + tf.contrib.layers.l2_regularizer(0.05)(W2) +  tf.contrib.layers.l2_regularizer(0.05)(W3)  
+
+
+原文出处：https://www.jianshu.com/p/1620343c9f3c
