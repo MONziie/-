@@ -1,0 +1,39 @@
+1、tf.argmax(vector, 1)
+返回的是vector中的最大值的索引号，如果vector是一个向量，那就返回一个值，如果是一个矩阵，那就返回一个向量，这个向量的每一个维度都是相对应矩阵行的最大值元素的索引号。
+
+2、tf.equal()
+tf.equal(A, B)是对比这两个矩阵或者向量的相等的元素，如果是相等的那就返回True，否则返回False，返回的值的矩阵维度和A是一样的
+
+3.tf.cast()
+tf.cast()函数是张量数据类型转换，比如读入的图片如果是int8类型的，一般在要在训练前把图像的数据格式转换为float32。
+
+cast(x, dtype, name=None)
+第一个参数 x:   待转换的数据（张量）
+第二个参数 dtype： 目标数据类型
+第三个参数 name： 可选参数，定义操作的名称
+
+t1 = tf.Variable([1,2,3,4,5])
+t2 = tf.cast(t1,dtype=tf.float32)
+
+tensorflow中的数据类型列表：
+
+数据类型	Python 类型	描述
+DT_FLOAT	tf.float32	32 位浮点数.
+DT_DOUBLE	tf.float64	64 位浮点数.
+DT_INT64	tf.int64	64 位有符号整型.
+DT_INT32	tf.int32	32 位有符号整型.
+DT_INT16	tf.int16	16 位有符号整型.
+DT_INT8	  tf.int8	  8 位有符号整型.
+DT_UINT8	tf.uint8	8 位无符号整型.
+DT_STRING	tf.string	可变长度的字节数组.每一个张量元素都是一个字节数组.
+DT_BOOL	  tf.bool	  布尔型.
+DT_COMPLEX64	tf.complex64	由两个32位浮点数组成的复数:实数和虚数.
+DT_QINT32	tf.qint32	用于量化Ops的32位有符号整型.
+DT_QINT8	tf.qint8	用于量化Ops的8位有符号整型.
+DT_QUINT8	tf.quint8	用于量化Ops的8位无符号整型.
+
+tf.cast()原文参考至： https://blog.csdn.net/dcrmg/java/article/details/79747814
+
+4.
+
+
