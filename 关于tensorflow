@@ -40,7 +40,14 @@ TensorFlow文档中使用了三种记号来方便地描述张量的维度：阶�
 n	[D0, D1, ... Dn]	n-D	一个n维张量的形式 [D0, D1, ... Dn].
 
 
+tensorflow 中的张量
 
+阶	数学实例	Python 例子
+0	纯量 (只有大小)	s = 483
+1	向量(大小和方向)	v = [1.1, 2.2, 3.3]
+2	矩阵(数据表)	m = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+3	3阶张量 (数据立体)	t = [[[2], [4], [6]], [[8], [10], [12]], [[14], [16], [18]]]
+n	n阶 (自己想想看)	....
 
 
 
@@ -99,6 +106,7 @@ n	[D0, D1, ... Dn]	n-D	一个n维张量的形式 [D0, D1, ... Dn].
 
 
 张量：https://www.zhihu.com/question/23720923/answer/32739132
-      https://blog.csdn.net/hpulfc/article/details/80886117?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase
+     https://blog.csdn.net/hpulfc/java/article/details/80886117
+
 查看 tf 2.0 symbols map
 https://docs.google.com/spreadsheets/d/1FLFJLzg7WNP6JHODX5q8BDgptKafq_slHpnHVbJIteQ/edit#gid=0
