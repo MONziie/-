@@ -30,6 +30,14 @@ tensor 看作是一个 n 维的数组或列表.
 
 
 
+TensorFlow文档中使用了三种记号来方便地描述张量的维度：阶，形状以及维数.下表展示了他们之间的关系：
+
+阶	形状	维数	实例
+0	[ ]	0-D	一个 0维张量. 一个纯量.
+1	[D0]	1-D	一个1维张量的形式[5].
+2	[D0, D1]	2-D	一个2维张量的形式[3, 4].
+3	[D0, D1, D2]	3-D	一个3维张量的形式 [1, 4, 3].
+n	[D0, D1, ... Dn]	n-D	一个n维张量的形式 [D0, D1, ... Dn].
 
 
 
@@ -91,6 +99,6 @@ tensor 看作是一个 n 维的数组或列表.
 
 
 张量：https://www.zhihu.com/question/23720923/answer/32739132
-
+      https://blog.csdn.net/hpulfc/article/details/80886117?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase
 查看 tf 2.0 symbols map
 https://docs.google.com/spreadsheets/d/1FLFJLzg7WNP6JHODX5q8BDgptKafq_slHpnHVbJIteQ/edit#gid=0
