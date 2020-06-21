@@ -1,1 +1,54 @@
+1.数学基础
 
+P(A|B)表示事件B已经发生的前提下，事件A发生的概率，叫做事件B发生下事件A的条件概率。
+其基本求解公式为：P(A|B)=P(AB)/P(B)
+
+怎么求P(B|A)？贝叶斯定理
+P(c|x) = P(x|c)*P(c)/P(x)
+
+先验概率基于已有知识对随机事件进行概率预估，但不考虑任何相关因素(P( c ))。
+后验概率基于已有知识对随机事件进行概率预估，并考虑相关因素(P(c|x))。
+
+c表示的是随机事件发生的一种情况。x表示的就是证据（evidence）\状况(condition)，泛指与随机事件相关的因素。
+P(c|x)：在x的条件下，随机事件出现c情况的概率。（后验概率）
+P( c )：（不考虑相关因素）随机事件出现c情况的概率。（先验概率）
+P(x|c)：在已知事件出现c情况的条件下，条件x出现的概率。（后验概率）
+P(x)：x出现的概率。（先验概率）
+
+
+
+贝叶斯定理所阐述的也就是后验概率的获得方法。
+
+
+2. 朴素贝叶斯分类
+对于给出的待分类项，求解在此项出现的条件下各个类别出现的概率，哪个最大，就认为此待分类项属于哪个类别。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://blog.csdn.net/qq_32690999/article/details/78737393?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase
