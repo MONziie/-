@@ -1,0 +1,111 @@
+random库集成了高斯正态分布
+
+一、
+1. 高斯噪声是服从高斯正态分布（均值为0方差为sigma方）的随机变量（误差）。高斯噪声是指它的概率密度函数服从高斯分布（即正态分布）的一类噪声。
+一些情况下我们需要向标准数据中加入合适的高斯噪声会让数据变得有一定误差而具有实验价值。
+
+sigma方也就是这个随机变量的二阶中心距。当均值为0的时候，二阶中心距等于二阶原点矩。而二阶原点矩就是一个信号的功率,因此高斯白噪声的功率就是sigma方。
+
+函数random.gauss(means,sigma)可以生成均值为means,标准差为sigma的高斯白噪声
+
+
+2. 椒盐噪声，通常是由图像传感器，传输信道，解压处理等产生的黑白相间的亮暗点噪声（椒-黑，盐-白）。通常出现在灰度图中
+椒盐噪声又称为脉冲噪声，它是一种随机出现的白点（盐噪声）或者黑点（椒噪声）。
+
+二、降噪方法
+降噪是图像卷积运算的重要功能之一；中值模板的卷积对去除椒盐噪声有比较好的作用但均值滤波的降噪效果不佳。对于高斯噪声，则没有找到较好的降噪方法。
+
+1. 中值滤波
+       原理即为，将模板内的像素数据，按从小到大的顺序排列，取中间的像素替换原始像素的卷积操作。
+       注，如果数量为偶数那么中位数则是中间两数的均值。中值滤波是一种可以非常有效去除少量异常像素值的滤波方法。
+2. 均值滤波
+       即求取模板内的像素均值代替像素值
+
+
+
+三、实现给图像添加椒盐噪声和高斯噪声
+
+
+import numpy as np
+import random
+import cv2
+from matplotlib import pyplot as plt
+
+def sp_noise(image,prob):
+ 
+    '''
+    添加椒盐噪声
+    prob:噪声比例
+    '''
+ 
+    output = np.zeros(image.shape,np.uint8)
+    thres = 1 - prob
+    for i in range(image.shape[0]):
+        for j in range(image.shape[1]):
+             rdn = random.random()
+             if rdn < prob:
+                 output[i][j] = 0
+             elif rdn > thres:
+                 output[i][j] = 255
+             else:
+                 output[i][j] = image[i][j]
+     return output
+     
+ def gasuss_noise(image, mean=0, var=0.001):
+ 
+    '''
+        添加高斯噪声
+        mean : 均值
+        var : 方差
+    '''
+ 
+    image = np.array(image/255, dtype=float)
+    noise = np.random.normal(mean, var ** 0.5, image.shape)
+    out = image + noise
+     if out.min() < 0:
+         low_clip = -1.
+     else:
+         low_clip = 0.
+     out = np.clip(out, low_clip, 1.0)
+     out = np.uint8(out*255)
+     #cv.imshow("gasuss", out)
+     return out
+ # Read image
+ img = cv2.imread("../paojie.jpg")
+ # 添加椒盐噪声，噪声比例 0.02
+ out1 = sp_noise(img, prob=0.02)
+ # 添加高斯噪声，均值为0，方差为0.001
+ out2 = gasuss_noise(img, mean=0, var=0.001)
+ # 显示图像
+ plt.figure(1)
+ plt.subplot(131)
+ plt.axis('off')  # 关闭坐标轴
+ plt.title('Original')
+ plt.imshow(img)
+ plt.subplot(132)
+ plt.axis('off')
+ plt.title('Add Salt and Pepper noise')
+ plt.imshow(out1)
+ plt.subplot(133)
+ plt.axis('off')
+ plt.title('Add Gaussian noise')
+ plt.imshow(out2)
+ plt.show()
+
+
+
+
+
+
+补充：在噪声的概念中，通常采用信噪比（Signal-Noise Rate, SNR）衡量图像噪声。通俗的讲就是信号占多少，噪声占多少，SNR越小，噪声占比越大。
+
+
+
+
+
+参考链接：https://blog.csdn.net/Ibelievesunshine/java/article/details/104885974
+https://blog.csdn.net/kaikai______/article/details/53535909
+
+
+
+
