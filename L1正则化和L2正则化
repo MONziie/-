@@ -12,3 +12,10 @@ loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels = y, logits
 
 
 原文出处：https://www.jianshu.com/p/1620343c9f3c
+
+
+L2与L1的区别在于，L1正则是拉普拉斯先验，而L2正则则是高斯先验。它们都是服从均值为0，协方差为1λ1λ。当λ=0λ=0时，即没有先验）没有正则项，
+则相当于先验分布具有无穷大的协方差，那么这个先验约束则会非常弱，模型为了拟合所有的训练集数据， 参数ww可以变得任意大从而使得模型不稳定，
+即方差大而偏差小。λλ越大，标明先验分布协方差越小，偏差越大，模型越稳定。即，加入正则项是在偏差bias与方差variance之间做平衡tradeoff（来自知乎）。
+
+原文链接：https://blog.csdn.net/heyongluoyao8/java/article/details/49429629
