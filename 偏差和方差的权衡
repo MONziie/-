@@ -1,0 +1,11 @@
+偏差和方差的权衡 参考：https://www.shuzhiduo.com/A/gAJGBx60zZ/
+
+K折交叉验证与偏差和方差：https://www.jianshu.com/p/651f998a6398
+
+提高模型的学习性能： loss function + 泛化误差
+1.loss function最小化
+2.泛化误差=偏差+方差+噪声，达到偏差和方差的权衡（平衡）
+
+了解偏差和方差的意义
+
+
