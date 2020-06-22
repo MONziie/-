@@ -1,7 +1,7 @@
 K折交叉切分
 
 为什么要进行交叉验证？
-通过进行交叉验证，能够提高模型的泛化能力，同时对数据进行多次使用能更好挖掘数据的价值
+
 
 KFold
  class skleaarn.model_selection KFold(n_splits= 'warn', shuffle=False,random_state= None)
@@ -19,3 +19,6 @@ random_state：随机种子数，保证每次随机的结果都是一样的。�
 
 
 sfolder 分出来的训练集和测试集中，0 和 1 的比例都是 1:1，而 kfolder 中并没有这一特性。
+
+
+关于交叉验证参考：http://blog.sina.com.cn/s/blog_688077cf0100zqpj.html
