@@ -1,7 +1,13 @@
+k折交叉验证就是把数据分为k份，每次取出其中一份作为验证集，剩下的k-1一份作为训练集，重复K次，然后取平均作为误差评估结果。
+k越大，学习模型与真实模型越拟合，bias越小，但variance会越大，反之...。
+
+
+
+
 K折交叉切分
 
 为什么要进行交叉验证？
-
+可以用来确定不同类型的模型哪个更好，是一种模型评估的方法。了解：偏差，方差和k-fold交叉验证的关系，
 
 KFold
  class skleaarn.model_selection KFold(n_splits= 'warn', shuffle=False,random_state= None)
