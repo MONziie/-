@@ -1,5 +1,99 @@
-梯度下降、随机梯度下降和批量梯度下降
+梯度法思想的三要素：出发点、下降方向、下降步长。
 
-各自的优缺点
+GD梯度下降：隨機選擇一個方向，然後每次邁步都選擇最陡的方向，直到這個方向上能達到的最低點。
+（梯度下降的方向是随机给出的，所以会造成走不到真正的最低点--即只能局部最优解；对于选定的方向，每走一步都选择最陡的方向直到最低点。）
+
+
+梯度下降是用來做什麼的?
+在機器學習算法中,有時候需要對原始的模型構建損失函數,然後通過優化算法對損失函數進行優化，以便尋找到最優的參數，使得損失函數的值最小。
+而在求解機器學習參數的優化算法中，使用較多的就是基於梯度下降的優化算法(Gradient Descent, GD)。
+优点：效率高，只需要求解损失函数的一阶导数，计算代价比较小，可以在很多大规模数据集上应用
+缺点：只能求得局部最优解，这个局部最优解不一定是全局最优解；步长过小函数收敛速度慢，步长过大容易找不到最优解
+
+
+GD梯度下降法有三种方式：
+批量梯度下降、随机梯度下降和小批量梯度下降
+   BGD            SGD            MBGD
+
+针对数据集的不同，分别有三种形式，各自的优缺点：
+1）批量梯度下降法BGD(Batch Gradient Descent):
+針對的是整個數據集，通過對所有的樣本的計算來求解梯度的方向。
+優點：全局最優解；易於並行實現；
+缺點：當樣本數據很多時，計算量開銷大，計算速度慢
+
+2）小批量梯度下降法MBGD（mini-batch Gradient Descent）
+把數據分為若干個批，按批來更新參數，這樣，一個批中的一組數據共同決定了本次梯度的方向，下降起來就不容易跑偏，減少了隨機性
+優點：減少了計算的開銷量，降低了隨機性
+
+3）隨機梯度下降法SGD（stochastic gradient descent）
+每個數據都計算算一下損失函數，然後求梯度更新參數。
+優點：計算速度快
+缺點：收斂性能不好
+
+總結：SGD可以看作是MBGD的一個特例，及batch_size=1的情況。在深度學習及機器學習中，基本上都是使用的MBGD算法。
+
+具体详解参考：https://www.jianshu.com/p/b4fd4e8b6ff0（这篇文章写得比较好）
+
+
+
+随机梯度下降：
+隨機梯度下降（SGD）是一種簡單但非常有效的方法，多用用於支持向量機、邏輯回歸等凸損失函數下的線性分類器的學習。
+並且SGD已成功應用於文本分類和自然語言處理中經常遇到的大規模和稀疏機器學習問題。
+
+SGD既可以用於分類計算，也可以用於回歸計算。
+
+（一）分类
+a）核心函數
+
+sklearn.linear_model.SGDClassifier
+
+b）主要參數
+loss ：指定損失函數。可選值：『hinge』(默認), 『log』, 『modified_huber』, 『squared_hinge』, 『perceptron』,
+"hinge":線性SVM
+"log":邏輯回歸
+"modified_huber":平滑損失，基於異常值容忍和概率估計
+"squared_hinge": 帶有二次懲罰的線性SVM
+"perceptron":帶有線性損失的感知器
+alpha:懲罰係數
+
+（二）回归
+SGDRegressor非常適合回歸問題具有大量訓練樣本（> 10000），對於其他的問題，建議使用的Ridge， Lasso或ElasticNet。
+a）核心函數
+
+sklearn.linear_model.SGDRegressor
+
+b）主要參數
+
+loss：指定損失函數。可選值『squared_loss』（默認）, 『huber』, 『epsilon_insensitive』, 『squared_epsilon_insensitive』
+
+"squared_loss":採用普通最小二乘法
+"huber": 使用改進的普通最小二乘法，修正異常值
+"epsilon_insensitive": 忽略小於epsilon的錯誤
+"squared_epsilon_insensitive":
+alpha:懲罰係數
+
+
+原文網址：https://kknews.cc/news/aojq88v.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+原文網址：https://kknews.cc/news/aojq88v.html
 
 
