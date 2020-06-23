@@ -20,3 +20,7 @@
 
 机器学习中常见的三个损失函数：mean square loss, binary cross entropy loss, categories cross entropy，其背后的原理都指向了极大似然估计。
 可见损失函数的定义并不是简单的'衡量预测值与真实值的距离'，其背后有着严谨的数学在为其可靠性做担保。
+
+
+http://www.360doc.com/content/20/0512/22/32196507_911857909.shtml
+https://www.cnblogs.com/breezezz/p/11277131.html#31-%E8%81%94%E7%B3%BB
