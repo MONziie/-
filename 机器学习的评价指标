@@ -19,8 +19,57 @@ Accuracy = {TP + TN}/{TP + FN + FP + TN}
 
 
 
-
-
-
 链接：https://www.jianshu.com/p/ce493d8c9cb8
+
+1. TPR、FPR&TNR
+2. 精确率Precision、召回率Recall和F1值
+3. 综合评价指标F-measure
+4. ROC曲线和AUC
+
+　　　　　　　 	预测1	预测0
+实际1　　True Positive(TP)	False Negative(FN)
+实际0　　False Positive(FP)	True Negative(TN)
+
+
+
+TPR、FPR&TNR
+真正类率(true positive rate ,TPR)：分类器所识别出的 正实例占所有正实例的比例----（真阳率）
+负正类率(false positive rate, FPR)：分类器错认为正类的负实例占所有负实例的比例-----（负阳率）
+真负类率（True Negative Rate，TNR）：分类器所识别出的 负实例占所有负实例的比例
+
+
+TPR = TP / (TP + FN)
+FPR = FP / (FP + TN)
+TNR = TN /(FP + TN) = 1 - FPR
+
+精确率Precision、召回率Recall和F1值
+一般来说，Precision就是检索出来的条目（比如：文档、网页等）有多少是准确的，Recall就是所有准确的条目有多少被检索出来了，两者的定义分别如下：
+
+Precision = 提取出的正确信息条数 /  提取出的信息条数     
+Recall = 提取出的正确信息条数 /  样本中的信息条数    
+
+为了能够评价不同算法的优劣，在Precision和Recall的基础上提出了F1值的概念，来对Precision和Recall进行整体评价。F1的定义如下：
+                        F1值  = 正确率 * 召回率 * 2 / (正确率 + 召回率) 
+
+综合评价指标F-measure
+Precision和Recall指标有时候会出现的矛盾的情况，这样就需要综合考虑他们，最常见的方法就是F-Measure（又称为F-Score）。
+                        F_score = (a^2+1)(P*R)/a*(P+R)
+当参数α=1时，就是最常见的F1。因此，F1综合了P和R的结果，当F1较高时则能说明试验方法比较有效。
+
+ROC曲线和AUC
+为什么引入ROC曲线？
+　　Motivation1：在一个二分类模型中，对于所得到的连续结果，假设已确定一个阀值，比如说 0.6，大于这个值的实例划归为正类，小于这个值则划到负类中。如果减小阀值，减到0.5，固然能识别出更多的正类，也就是提高了识别出的正例占所有正例 的比类，即TPR,但同时也将更多的负实例当作了正实例，即提高了FPR。为了形象化这一变化，引入ROC，ROC曲线可以用于评价一个分类器。
+　　Motivation2：在类不平衡的情况下,如正样本90个,负样本10个,直接把所有样本分类为正样本,得到识别率为90%。但这显然是没有意义的。单纯根据Precision和Recall来衡量算法的优劣已经不能表征这种病态问题。
+以FPR为横轴,TPR为纵轴,得到ROC空间：ROC越往上,分类器效果越好
+
+
+AUC值为ROC曲线所覆盖的区域面积,显然,AUC越大,分类器分类效果越好。
+　0.5 < AUC < 1，优于随机猜测。这个分类器（模型）妥善设定阈值的话，能有预测价值。
+AUC的物理意义：假设分类器的输出是样本属于正类的score（置信度），则AUC的物理意义为，任取一对（正、负）样本，正样本的score大于负样本的score的概率。
+怎样计算AUC？
+求面积或者求得分概率
+
+链接：https://www.cnblogs.com/maybe2030/p/5375175.html
+
+
 
