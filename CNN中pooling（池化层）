@@ -1,0 +1,6 @@
+pooling层(池化层)的输入一般来源于上一个卷积层,主要有以下几个作用：
+
+1.保留主要的特征,同时减少下一层的参数和计算量，防止过拟合；
+2.保持某种不变性，包括translation(平移)，rotation(旋转)，scale(尺度),
+
+常用的有mean-pooling和max-pooling。
