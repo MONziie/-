@@ -1,0 +1,10 @@
+最大最小标准化:
+
+    X* = (x-x.min)/(x.max-x.min)
+
+
+Z-score标准化：
+
+    X* = (x- μ)/δ
+    x = (a-a.mean())/a.std()
+
