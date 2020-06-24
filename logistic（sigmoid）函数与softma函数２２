@@ -1,0 +1,26 @@
+logistic函数和softmax函数
+
+
+logistic函数的公式形式如下：
+                 f(x)=1/[1+e^−k(x−x0)]
+
+　　其中，x0表示了函数曲线的中心（sigmoid midpoint），k是曲线的坡度。
+  
+logistic函数的应用
+逻辑斯谛回归（Logistic Regression，简称LR）作为一种对数线性模型（log-linear model）被广泛地应用于分类和回归场景中。
+此外，logistic函数也是神经网络最为常用的激活函数，即sigmoid函数。
+
+softmax函数的本质就是将一个K维的任意实数向量压缩（映射）成另一个K维的实数向量，其中向量中的每个元素取值都介于（0，1）之间。
+sotfmax函数的应用
+softmax函数经常用在神经网络的最后一层，作为输出层，进行多分类。此外，softmax在增强学习领域内，softmax经常被用作将某个值转化为激活概率，
+
+logistic和softmax的关系
+　1）logistic具体针对的是二分类问题，而softmax解决的是多分类问题，因此从这个角度也可以理解logistic函数是softmax函数的一个特例。
+　2）从概率角度来看logistic和softmax函数的区别。
+　　softmax建模使用的分布是多项式分布，而logistic则基于伯努利分布，
+　3）softmax回归和多个logistic回归的关系。
+     softmax回归进行的多分类，类与类之间是互斥的，即一个输入只能被归为一类；
+  　　多个logistic回归进行多分类，输出的类别并不是互斥的，即"苹果"这个词语既属于"水果"类也属于"3C"类别。
+
+
+文章链接：https://www.cnblogs.com/maybe2030/p/5678387.html
