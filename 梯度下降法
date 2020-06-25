@@ -77,7 +77,11 @@ alpha:懲罰係數
 
 
 
+随机梯度下降法(Stochastic gradient descent)：
+随机梯度下降法（SGD）的思想就是按照数据生成分布抽取mmm个样本，通过计算他们梯度的平均值来更新梯度（梯度下降法采用的是全部样本的梯度平均值来更新梯度）。
+NOTE: 一般来说我们在实现SGD一般采用的都是以上方法，即通过每次取一个batch_size大小的样本来更新梯度而不是每次仅取1个样本来更新
 
+原文链接：https://blog.csdn.net/Invokar/java/article/details/86767943
 
 
 
