@@ -1,3 +1,9 @@
+https://blog.csdn.net/XiaoYi_Eric/article/details/86726284
+
+机器学习分类任务的常用评价指标：
+准确率（Accuracy）、精确率（Precision）、召回率（Recall）、P-R曲线（Precision-Recall Curve）、F1 Score、混淆矩阵（Confuse Matrix）、ROC、AUC。
+
+
 不同的机器学习任务有着不同的性能评价指标。
 分类问题，可以使用准确率 (Accuracy)、对数损失函数 (log-loss)、AUC等评价方法。
 实数序列数据预测问题，可以使用平方根误差 (root mean square error， RMSE) 等指标；
