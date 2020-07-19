@@ -63,7 +63,8 @@ tensorflow提供了多种optimizer，典型梯度下降GradientDescent和Adagrad
 optimizer=tf.train.AdamOptimizer(learning_rate=0.001).minimize(cost)
 
 
-
+tf.nn模块的操作
+https://blog.csdn.net/qq_36653505/article/details/81105894
 
 
 
