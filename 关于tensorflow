@@ -62,6 +62,9 @@ tensorflow提供了多种optimizer，典型梯度下降GradientDescent和Adagrad
 
 optimizer=tf.train.AdamOptimizer(learning_rate=0.001).minimize(cost)
 
+TensorFlow提供了两个类来帮助多线程的实现：tf.Coordinator和 tf.QueueRunner。Coordinator类可以用来同时停止多个工作线程并且向那个在等待所有工作线程终止的
+程序报告异常，QueueRunner类用来协调多个工作线程同时将多个张量推入同一个队列中。
+
 
 tf.nn模块的操作
 https://blog.csdn.net/qq_36653505/article/details/81105894
