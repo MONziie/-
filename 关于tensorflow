@@ -55,6 +55,12 @@ n	n阶 (自己想想看)	....
 
 
 
+tensorflow提供了多种optimizer，典型梯度下降GradientDescent和Adagrad、Momentum、Nestrov、Adam等变种。
+
+典型的学习步骤是梯度下降GradientDescent，optimizer可以自动实现这一过程，通过指定loss来串联所有相关变量形成计算图，
+然后通过optimizer(learning_rate).minimize(loss)实现自动梯度下降。minimize()也是两步操作的合并，后边会分解。
+
+optimizer=tf.train.AdamOptimizer(learning_rate=0.001).minimize(cost)
 
 
 
@@ -101,10 +107,7 @@ n	n阶 (自己想想看)	....
 
 
 
-
-
-
-
+https://blog.csdn.net/huqinweI987/article/details/82771521
 
 
 张量：https://www.zhihu.com/question/23720923/answer/32739132
