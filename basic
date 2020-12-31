@@ -5,3 +5,4 @@ a.weekday()
 --------------------------------
 c=dict(zip(a,b))
 
+.sort(reverse=True)
