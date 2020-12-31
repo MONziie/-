@@ -1,0 +1,7 @@
+关于时间：
+a= datetime.datetime()
+a.weekday()
+
+--------------------------------
+c=dict(zip(a,b))
+
