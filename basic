@@ -15,3 +15,48 @@ seq：要连接的元素序列、字符串、元组、字典
 
 返回值
 返回通过指定字符连接seq中的元素后生成的新字符串。
+---------------------------------------------------------
+库
+
+from collections import Counter
+1. 计数器：对字符串\列表\元祖\字典进行计数,返回一个字典类型的数据,键是元素,值是元素出现的次数
+from collections import Counter
+s = "hello-python-hello-world"
+a = Counter(s)
+print(a)
+# 结果 
+Counter({'-': 3, 'd': 1, 'e': 2, 'h': 3, 'l': 5, 'n': 1, 'o': 4, 'p': 1, 'r': 1, 't': 1, 'w': 1, 'y': 1})
+
+2.elements
+返回一个Counter计数后的各个元素的迭代器
+for i in a.elements():
+    print(i, end="")
+# 结果:
+hhheellllloooo---pytnwrd
+
+3.most_common(n) 
+统计出现最多次数的n个元素
+
+print(a.most_common(3))
+ # 结果
+ [('l', 5), ('o', 4), ('h', 3)] 出现次数最多的三个元素
+
+4.update (类似集合的update,进行更新)
+a.update("hello123121")
+print(a)
+
+5.subtract (类似update,做减法)
+s1 = "abcd"
+s2 = "cdef"
+a1 = Counter(s1)
+a2 = Counter(s2)
+a1.subtract(a2)
+print(a1)
+# 结果: 
+Counter({'a': 1, 'b': 1, 'c': 0, 'd': 0, 'e': -1, 'f': -1})
+
+6. iteritems() (同字典的items(),返回迭代器)
+7. iterkeys() (同字典的keys(),返回迭代器)
+8. itervalues() (同字典的values(),返回迭代器)
+
+
