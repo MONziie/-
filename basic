@@ -141,6 +141,12 @@ bin()、oct()、hex()的返回值均为字符串，且分别带有0b、0o、0x�
 
 --------------------------------------------------------
 正则表达式
+https://www.runoob.com/regexp/regexp-syntax.html
+https://www.cnblogs.com/shangdawei/p/3160367.html
 
+import re
+re.fullmatch()
+re.match()
+----------------------------------------------------------
 
 
