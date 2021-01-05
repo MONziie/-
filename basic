@@ -110,9 +110,9 @@ bin(x)
 oct(x)
 	   2进制	             8进制	        10进制	             16进制
 2进制	  -	              bin(int(x, 8))	bin(int(x, 10))	   bin(int(x, 16))
-8进制	 oct(int(x, 2))	  -	                oct(int(x, 10))	   oct(int(x, 16))
-10进制 int(x, 2)	      int(x, 8)	        -	               int(x, 16)
-16进制 hex(int(x, 2))	  hex(int(x, 8))	hex(int(x, 10))	    -
+8进制	 oct(int(x, 2))	 	 -	        oct(int(x, 10))	   oct(int(x, 16))
+10进制 	int(x, 2)	      int(x, 8)	        -	            int(x, 16)
+16进制 	hex(int(x, 2))	      hex(int(x, 8))	hex(int(x, 10))	    -
 
 bin()、oct()、hex()的返回值均为字符串，且分别带有0b、0o、0x前缀。
 
@@ -147,6 +147,26 @@ https://www.cnblogs.com/shangdawei/p/3160367.html
 import re
 re.fullmatch()
 re.match()
+import re
+s1='abcabccba'
+a=re.match(r'([a-z]+)\1+',s1)
+print(a)
+print(a.group())
+print('\n')
+
+s2='abcabcabc'
+b=re.match(r'([a-z]+)\1+',s2)
+print(b)
+print(b.group())
+print('\n')
+
+c=re.fullmatch(r'([a-z]+)\1+',s1)
+print(c)
+print('\n')
+
+d=re.fullmatch(r'([a-z]+)\1+',s2)
+print(d)
+print(d.group())
 ----------------------------------------------------------
 
 
