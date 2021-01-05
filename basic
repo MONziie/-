@@ -104,9 +104,13 @@ md5.update(data.encode('utf-8'))
 print(md5.hexdigest())
 
 
+-----------------------------------------
 
+行列式的计算公式为 $\begin{vmatrix}a&amp;b\\c&amp;d\end{vmatrix}=ad-bc$。
 
+----------------------------------------------
 
+.values()
 
 
 
