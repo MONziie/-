@@ -168,5 +168,122 @@ d=re.fullmatch(r'([a-z]+)\1+',s2)
 print(d)
 print(d.group())
 ----------------------------------------------------------
+栈
 
+class Stack(object):
+  # 初始化栈为空列表
+  def __init__(self):
+    self.items = []
+  # 判断栈是否为空，返回布尔值
+  def is_empty(self):
+    return self.items == []
+  # 返回栈顶元素
+  def peek(self):
+    return self.items[len(self.items) - 1]
+  # 返回栈的大小
+  def size(self):
+    return len(self.items)
+  # 把新的元素堆进栈里面（程序员喜欢把这个过程叫做压栈，入栈，进栈……）
+  def push(self, item):
+    self.items.append(item)
+  # 把栈顶元素丢出去（程序员喜欢把这个过程叫做出栈……）
+  def pop(self, item):
+    return self.items.pop()
+if __name__ == __main__:
+  # 初始化一个栈对象
+  my_stack = Stack()
+  # 把'h'丢进栈里
+  my_stack.push('h')
+  # 把'a'丢进栈里
+  my_stack.push('a')
+  # 看一下栈的大小（有几个元素）
+  print my_stack.size()
+  # 打印栈顶元素
+  print my_stack.peek()
+  # 把栈顶元素丢出去，并打印出来
+  print my_stack.pop()
+  # 再看一下栈顶元素是谁
+  print my_stack.peek()
+  # 这个时候栈的大小是多少？
+  print my_stack.size()
+  # 再丢一个栈顶元素
+  print my_stack.pop()
+  # 看一下栈的大小
+  print my_stack.size
+  # 栈是不是空了？
+  print my_stack.is_empty()
+  # 哇~真好吃~
+  print 'Yummy~'
+  -------------------------------------------------
+  堆栈与队列
+  1、python实现堆栈，可先将Stack类写入文件stack.py，在其它程序文件中使用from stack import Stack，然后就可以使用堆栈了。
+
+stack.py的程序:
+复制代码代码如下:
+class Stack(): 
+    def __init__(self,size): 
+        self.size=size; 
+        self.stack=[]; 
+        self.top=-1; 
+    def push(self,ele):  #入栈之前检查栈是否已满 
+        if self.isfull(): 
+            raise exception("out of range"); 
+        else: 
+            self.stack.append(ele); 
+            self.top=self.top+1; 
+    def pop(self):             # 出栈之前检查栈是否为空 
+        if self.isempty(): 
+            raise exception("stack is empty"); 
+        else: 
+            self.top=self.top-1; 
+            return self.stack.pop(); 
+     
+    def isfull(self): 
+        return self.top+1==self.size; 
+    def isempty(self): 
+        return self.top==-1;
+
+ 
+再写一个程序文件，stacktest.py,使用栈，内容如下:
+ 
+复制代码代码如下:
+#!/usr/bin/python  
+from stack import Stack 
+s=Stack(20); 
+for i in range(3): 
+    s.push(i); 
+s.pop() 
+print s.isempty();
+
+2、python 实现队列:
+复制代码代码如下:
+class Queue(): 
+    def __init__(self,size): 
+        self.size=size; 
+        self.front=-1; 
+        self.rear=-1; 
+        self.queue=[]; 
+    def enqueue(self,ele):  #入队操作 
+        if self.isfull(): 
+            raise exception("queue is full"); 
+        else: 
+            self.queue.append(ele); 
+            self.rear=self.rear+1; 
+    def dequeue(self):      #出队操作 
+        if self.isempty(): 
+            raise exception("queue is empty"); 
+        else: 
+            self.front=self.front+1; 
+            return self.queue[self.front]; 
+    def isfull(self): 
+        return self.rear-self.front+1==self.size; 
+    def isempty(self): 
+        return self.front==self.rear; 
+     
+q=Queue(10); 
+for i in range(3): 
+    q.enqueue(i); 
+print q.dequeue(); 
+print q.isempty();
+  
 
