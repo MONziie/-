@@ -1,0 +1,87 @@
+https://blog.csdn.net/qingqing7/article/details/79070722
+
+### 常用的时间序列模型有AR模型(Autoregressive model:自回归模型)、MA模型(moving average model:滑动平均模型)、
+ARMA模型(Auto-Regressive and Moving Average Model:自回归滑动平均模型)和ARIMA模型(Autoregressive Integrated Moving Average Model:自回归积分滑动平均模型)等。
+
+时间序列是时间间隔不变的情况下收集的不同时间点数据集合。
+这些集合被分析用来了解长期发展趋势及为了预测未来。
+时间序列与常见的回归问题的不同点在于:
+1、时间序列是跟时间有关的;而线性回归模型的假设：观察结果是独立的在这种情况下是不成立的。
+2、随着上升或者下降的趋势，更多的时间序列出现季节性趋势的形式；
+
+
+## 时间序列的预处理(使数据平稳化和随机化)
+三种检验方法：
+时序图检验，利用自相关系数和偏相关系数，
+单位根检验，利用差分将序列数据转换为平衡序列
+
+## 随机化处理
+对于纯随机序列，又称白噪声序列，序列的各项数值之间没有任何相关关系，序列在进行完全无序的随机波动，可以终止对该序列的分析。
+白噪声序列是没有信息可提取的平稳序列。对于平稳非白噪声序列，它的均值和方差是常数。通常是建立一个线性模型来拟合该序的发展，
+借此提取该序列的有用信息。ARMA模型是最常用的平稳序列拟合模型。
+
+## 平稳时间序列建模
+某个时间序列经过预处理，被判定为平稳非白噪声序列，就可以进行时间序列建模。
+## 建模步骤：
+（1）计算出该序列的自相关系数（ACF）和偏相关系数（PACF）；
+（2）模型识别，也称模型定阶。根据系数情况从AR§模型、MA(q)模型、ARMA(p，q)模型、ARIMA（p，d，q）模型中选择合适模型，其中p为自回归项，d为差分阶数，q为移动平均项数。
+若平稳序列的偏相关函数是截尾的，而自相关函数是拖尾的，可断定序列适合AR模型；若平稳序列的偏相关函数是拖尾的，而自相关函数是截尾的，则可断定序列适合MA模型；若平稳序列的偏相关函数和自相关函数均是拖尾的，则序列适合ARMA模型。（截尾是指时间序列的自相关函数（ACF）或偏自相关函数（PACF）在某阶后均为0的性质（比如AR的PACF）；拖尾是ACF或PACF并不在某阶后均为0的性质（比如AR的ACF）。）
+（3）估计模型中的未知参数的值并对参数进行检验；
+（4）模型检验；
+（5）模型优化；
+（6）模型应用：进行短期预测。
+
+
+python中有专门的库statsmodels可以用来作时间序列分析
+
+#-*- coding: utf-8 -*-
+import matplotlib.pyplot as plt
+import pandas as pd
+data=pd.read_csv('./HIS_MONTH.csv')
+b=data['fData']
+plt.plot(data['fData'])
+plt.show()
+
+#自相关图
+from statsmodels.graphics.tsaplots import plot_acf
+plot_acf(data['fData']).show()
+
+#偏自相关图
+from statsmodels.graphics.tsaplots import plot_pacf
+plot_pacf(data['fData']).show()
+
+#平稳性检测
+from statsmodels.tsa.stattools import adfuller as ADF
+print('原始序列的ADF检验结果为：')
+print(ADF(data['fData']))
+#返回值依次为adf、pvalue、usedlag、nobs、critical values、icbest、regresults、resstore
+
+#白噪声检验
+from statsmodels.stats.diagnostic import acorr_ljungbox
+print('差分序列的白噪声检验结果为：')
+print(acorr_ljungbox(data['fValueData'], lags=1))
+
+#差分后的结果
+D_data = data['fValueData'].diff().dropna()
+D_data.columns = ['fValueData']
+#时序图
+D_data.plot()
+
+#自相关图
+plot_acf(D_data).show()
+plt.show()
+
+#偏自相关图
+plot_pacf(D_data).show()
+
+#平稳性检测
+print('差分序列的ADF检验结果为：')
+print( ADF(D_data))
+
+#白噪声检验
+from statsmodels.stats.diagnostic import acorr_ljungbox
+#返回统计量和p值
+print('差分序列的白噪声检验结果为：')
+print(acorr_ljungbox(D_data, lags=1))
+
+https://blog.csdn.net/qingqing7/article/details/79070722
