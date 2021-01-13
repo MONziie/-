@@ -1,4 +1,4 @@
-installation from: https://xgboost.readthedocs.io/en/latest/build.html
+[Installation Guide] from: https://xgboost.readthedocs.io/en/latest/build.html
 
 XGBoost是boosting算法的其中一种。Boosting算法的思想是将许多弱分类器集成在一起形成一个强分类器。
 XGBoost是一种梯度提升树模型，它是将许多树模型集成在一起，形成一个很强的分类器，所用到的树模型则是CART回归树模型。
@@ -63,7 +63,30 @@ bst.load_config(config)
     b: 在普通的GBM中，叶子节点样本没有权重的概念，其实就是等权重的，也就相当于叶子节点样本个数
     c: 越小越没有限制，容易过拟合，太高容易欠拟合
     
+5. max_delta_step [default: 0] [range: [0, inf]]
+    a: 适用于正负样本不均衡情况下，控制学习速率(类似eta)最大为某个值，不能超过这个阈值
+    b: 首先我们有参数eta来控制学习速率，为了后面学习到更多，每一步在权重上乘上这个因子，降低速度
+    c: 但是在正负样本不均衡的情况下eta不足够，因为此时由于二阶导接近于0的原因，权重会特别大
+    d: 这个参数就是用来控制学习速率最大不能超过这个数值
 
+6. sub_sample [default: 1] [range: (0, 1]]
+    a: 样本抽样比例
+    b: 在每次训练的随机选取sub_sample比例的样本来作为训练样本
+
+7. colsample_by* [default: 1]
+    a: 这里实际上有3个参数，借助了随机森林的特征抽样的思想，3个参数可以同时使用
+    b: colsample_bytree   更常用，每棵树的特征抽样比例
+    c: colsample_bylevel  每一层深度的树特征抽样比例
+    d: colsample_bynode   每一个节点的特征抽样比例
+
+8. lambda [default: 1] [alias: reg_lambda]
+    a: 损失函数中的L2正则化项的系数，类似RidgeRegression，减轻过拟合
+
+9. alpha [default: 0] [alias: reg_alpha]
+    a: 损失函数中的L1正则化项的系数，类似LASSO，减轻过拟合
+
+10. scale_pos_weight [default: 1]
+    a: 在正负样本不均衡的情况下，此参数需要设置，通常为: sum(负样本) / sum(正样本)
     
 
 samples源代码: https://github.com/dmlc/xgboost/tree/master/demo/guide-python
