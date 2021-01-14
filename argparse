@@ -1,0 +1,11 @@
+https://zhuanlan.zhihu.com/p/138294710
+
+用于为程序提供命令行接口（Command Line Interface）
+
+使用这个库主要分为四步：
+
+import argparse
+创建 parser
+向 parser 添加位置变量和可选变量
+运行 .parse_args()
+
